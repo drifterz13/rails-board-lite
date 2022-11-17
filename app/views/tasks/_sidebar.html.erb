@@ -1,0 +1,9 @@
+<div class='h-full bg-blue-400'>
+  <div class='flex flex-col gap-2'>
+    <% @tasks.each do |task| %>
+      <div id="<%= dom_id(task) %>" class='px-4 py-2'>
+        <%= task.title %>
+      </div>
+    <% end %>
+  </div>
+</div>

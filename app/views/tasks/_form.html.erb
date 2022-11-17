@@ -1,0 +1,15 @@
+<%= form_with model: task, class: 'flex flex-col gap-2'  do |f| %>
+  <% if task.errors.any? %>
+    <h2>
+      <%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:
+    </h2>
+    <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= f.label :title, "Task title" %>
+  <%= f.text_field :title, placeholder: "My task", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  %>
+  <%= f.submit "Create Task", class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center cursor-pointer" %>
+<% end %>
