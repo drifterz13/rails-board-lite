@@ -10,12 +10,10 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
 
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @task.save
+      redirect_to @task
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -23,12 +21,30 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+
+    if @task.update(task_params)
+      redirect_to @task
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+
+    redirect_to root_path, status: :see_other
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:title)
+    params.require(:task).permit(:title, :completed)
   end
 end

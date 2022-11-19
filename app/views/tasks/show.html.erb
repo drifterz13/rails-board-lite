@@ -1,2 +1,7 @@
-<h1>Show task page</h1>
-<%= @task.title %>
+<h1 class='text-2xl font-bold'>
+  <%= @task.title %>
+  <div>status: <%= @task.completed %></div>
+</h1>
+<%= link_to "See all tasks", tasks_path, class: "text-orange-400 hover:text-orange-600" %>
+<%= link_to "Edit task", edit_task_path, class: "text-orange-400 hover:text-orange-600" %>
+<%= button_to "Delete task", @task, method: :delete, class: "text-red-400 hover:text-red-600"  %>
