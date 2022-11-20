@@ -1,0 +1,5 @@
+<% flash.each do |flash_type, message| %>
+  <div class="<%= class_names('transition duration-300 ease-in-out', flash_color_by(flash_type)) %>" data-controller="removals">
+    <%= message %>
+  </div>
+<% end %>

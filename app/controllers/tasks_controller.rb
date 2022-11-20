@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         format.html { redirect_to tasks_path }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "Task was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -32,6 +32,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to tasks_path }
+        format.turbo_stream { flash.now[:notice] = "Task was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -43,7 +44,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to tasks_path, status: :see_other }
-      format.turbo_stream
+      format.turbo_stream { flash.now[:notice] = "Task was successfully removed." }
     end
   end
 
