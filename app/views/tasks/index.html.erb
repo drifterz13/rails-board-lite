@@ -1,11 +1,10 @@
 <% if flash[:notice] %>
-  <div class="text-green-300 bg-green-900"><%= flash[:notice] %></div>
+  <div class="text-green-300"><%= flash[:notice] %></div>
 <% end %>
-<div class='grid grid-cols-4 h-full'>
-  <div class='cols-span-1'>
-    <%= render 'sidebar' %>
-  </div>
-  <div class='col-span-3'>
-    <%= link_to "New task", new_task_path, class: "text-orange-400 hover:text-orange-600" %>
-  </div>
+<div class='col-span-3'>
+  <%= link_to "New task", new_task_path, class: "text-blue-400 hover:text-blue-600" %>
+</div>
+<hr />
+<div class='flex flex-col gap-4'>
+  <%= render @tasks %>
 </div>

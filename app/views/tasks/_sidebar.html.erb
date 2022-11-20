@@ -1,9 +1,0 @@
-<div class='h-full bg-orange-400 p-4'>
-  <div class='flex flex-col gap-4'>
-    <% @tasks.each do |task| %>
-      <%= link_to task, class: "px-4 py-2 bg-white rounded flex justify-between" do %>
-        <%= task.title %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
