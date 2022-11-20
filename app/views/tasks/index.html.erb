@@ -1,10 +1,8 @@
-<% if flash[:notice] %>
-  <div class="text-green-300"><%= flash[:notice] %></div>
-<% end %>
-<div class='col-span-3'>
+<div class='mb-5'>
+  <%= turbo_frame_tag "tasks" do %>
+    <%= render @tasks %>
+  <% end %>
+</div>
+<%= turbo_frame_tag dom_id(Task.new) do %>
   <%= link_to "New task", new_task_path, class: "text-blue-400 hover:text-blue-600" %>
-</div>
-<hr />
-<div class='flex flex-col gap-4'>
-  <%= render @tasks %>
-</div>
+<% end %>

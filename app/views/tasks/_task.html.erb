@@ -1,3 +1,11 @@
-<%= link_to task, class: "text-blue-400 hover:text-blue-600" do %>
-  <%= task.title %>
+<%= turbo_frame_tag dom_id(task) do %>
+  <div class="bg-white shadow px-4 py-2">
+    <div class="text-lg font-bold">
+      <%= task.title %>
+    </div>
+    <div class="flex gap-4">
+      <%= link_to "Edit", edit_task_path(task), class: "text-blue-400 hover:text-blue-600" %>
+      <%= button_to "Delete", task, method: :delete, class: "text-red-400 hover:text-red-600" %>
+    </div>
+  </div>
 <% end %>

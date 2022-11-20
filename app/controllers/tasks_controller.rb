@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
     @tasks = Task.all
@@ -11,10 +11,13 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
 
-    if @task.save
-      redirect_to @task
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to tasks_path }
+        format.turbo_stream
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -26,18 +29,22 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @task.update(task_params)
-      redirect_to @task
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @task.update(task_params)
+        format.html { redirect_to tasks_path }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
-    @task = Task.find(params[:id])
     @task.destroy
 
-    redirect_to root_path, status: :see_other
+    respond_to do |format|
+      format.html { redirect_to root_path, status: :see_other }
+      format.turbo_stream
+    end
   end
 
   private
