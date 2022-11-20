@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_19_073000) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_20_141403) do
+  create_table "tasklists", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.boolean "completed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "tasklist_id", null: false
+    t.index ["tasklist_id"], name: "index_tasks_on_tasklist_id"
   end
 
+  add_foreign_key "tasks", "tasklists"
 end
