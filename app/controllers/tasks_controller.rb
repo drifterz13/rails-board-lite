@@ -42,7 +42,7 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to root_path, status: :see_other }
+      format.html { redirect_to tasks_path, status: :see_other }
       format.turbo_stream
     end
   end

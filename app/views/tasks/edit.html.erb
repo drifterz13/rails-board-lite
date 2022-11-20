@@ -1,5 +1,7 @@
 <div class="text-2xl font-bold">Edit task</div>
 <%= turbo_frame_tag dom_id(@task) do %>
-  <%= render "form", task: @task %>
-  <%= link_to "Cancel", tasks_path %>
+  <div class="max-w-md">
+    <%= render "form", task: @task %>
+    <%= link_to "Cancel", tasks_path %>
+  </div>
 <% end %>
