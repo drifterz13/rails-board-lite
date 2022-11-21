@@ -1,0 +1,11 @@
+<%= form_with model: @tasklist do |f| %>
+  <% if tasklist.errors.any? %>
+    <h2><%= pluralize(tasklist.errors.count, "errors") %> prohibited this tasklist to being saved.</h2>
+    <% tasklist.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+  <%= f.label :title %>
+  <%= f.text_field :title, placeholder: "My tasklist", autofocus: true, class: "border border-black" %>
+  <%= f.submit nil, class: "border border-black cursor-pointer" %>
+<% end %>

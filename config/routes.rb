@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :tasks
+  resources :tasklists do
+    resources :tasks
+  end
 
-  root "tasks#index"
+  root "tasklists#index"
 end

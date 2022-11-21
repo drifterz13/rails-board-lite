@@ -2,6 +2,6 @@
   <%= @task.title %>
   <div>status: <%= @task.completed %></div>
 </h1>
-<%= link_to "Back", tasks_path, class: "text-blue-400 hover:text-blue-600" %>
-<%= link_to "Edit task", edit_task_path, class: "text-blue-400 hover:text-blue-600" %>
-<%= button_to "Delete task", @task, method: :delete, class: "text-red-400 hover:text-red-600"  %>
+<%= link_to "Back", tasklists_path, class: "text-blue-400 hover:text-blue-600" %>
+<%= link_to "Edit task", edit_tasklist_task_path(@tasklist, @task), class: "text-blue-400 hover:text-blue-600" %>
+<%= button_to "Delete task", [@tasklist, @task], method: :delete, class: "text-red-400 hover:text-red-600"  %>

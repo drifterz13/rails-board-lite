@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :set_tasklist, only: [:new, :create]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -8,21 +9,21 @@ class TasksController < ApplicationController
   def show
   end
 
+  def new
+    @task = @tasklist.tasks.build
+  end
+
   def create
-    @task = Task.new(task_params)
+    @task = @tasklist.tasks.build(task_params)
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to tasks_path }
-        format.turbo_stream { flash.now[:notice] = "Task was successfully created." }
+        format.html { redirect_to tasklists_path }
+        # format.turbo_stream { flash.now[:notice] = "Task was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
     end
-  end
-
-  def new
-    @task = Task.new
   end
 
   def edit
@@ -49,6 +50,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def set_tasklist
+    @tasklist = Tasklist.find(params[:tasklist_id])
+  end
 
   def set_task
     @task = Task.find(params[:id])
