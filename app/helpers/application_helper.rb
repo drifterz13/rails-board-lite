@@ -7,9 +7,9 @@ module ApplicationHelper
     puts type
     case type
     when "notice"
-      "text-green-600"
+      "notice text-green-600"
     when "alert"
-      "text-red-600"
+      "alert text-red-600"
     end
   end
 end
