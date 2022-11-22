@@ -1,11 +1,15 @@
-<%= form_with model: @tasklist do |f| %>
+<%= form_with model: @tasklist, data: { controller: "form" } do |f| %>
   <% if tasklist.errors.any? %>
     <h2><%= pluralize(tasklist.errors.count, "errors") %> prohibited this tasklist to being saved.</h2>
     <% tasklist.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   <% end %>
-  <%= f.label :title %>
-  <%= f.text_field :title, placeholder: "My tasklist", autofocus: true, class: "border border-black" %>
-  <%= f.submit nil, class: "border border-black cursor-pointer" %>
+  <%= f.label :title, hidden: true %>
+  <%= f.text_field :title, 
+    placeholder: "My tasklist", 
+    data: { action: "blur->form#submit", "form-target": "input", title: tasklist.title }, 
+    class: "border border-black" 
+  %>
+  <%= f.submit nil, hidden: true, class: "border border-black cursor-pointer" %>
 <% end %>

@@ -1,15 +1,20 @@
-<div>
+<div class="flex gap-3">
   <% @tasklists.each do |tasklist|  %>
     <div id="<%= dom_id(tasklist) %>" class="flex flex-col">
       <div class="w-[300px] flex justify-between">
-        <div>
-          <%= tasklist.title %>
-        </div>
-        <%= link_to new_tasklist_task_path(tasklist.id) do %>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
+        <%= turbo_frame_tag dom_id(tasklist) do %>
+          <div>
+            <%= tasklist.title %>
+            <%= link_to "(edit)", edit_tasklist_path(tasklist.id), class: "underline" %>
+          </div>
         <% end %>
+        <div>
+          <%= link_to new_tasklist_task_path(tasklist.id) do %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          <% end %>
+        </div>
       </div>
       <% tasklist.tasks.each do |task| %>
         <div class="<%= dom_id(task) %>">
@@ -18,5 +23,5 @@
       <% end %>
     </div>
   <% end %>
-  <%= link_to "Create List", new_tasklist_path, class: "text-blue-400"  %>
 </div>
+<%= link_to "Create List", new_tasklist_path, class: "text-blue-400"  %>
