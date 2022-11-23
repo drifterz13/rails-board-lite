@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SomeApp</title>
+    <title>Lite Board</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,13 +10,18 @@
   </head>
   <body>
     <div class='h-screen'>
+      <div class="px-9 py-6 shadow flex justify-end gap-3">
+        <% if user_signed_in? %>
+          <%= current_user.email %>
+          <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+        <% end %>
+      </div>
       <div id="flash" class="flash">
         <%= render "layouts/flash" %>
       </div>
-      <% if user_signed_in? %>
-        <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
-      <% end %>
-      <%= yield %>
+      <div class="mt-6">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

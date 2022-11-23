@@ -4,8 +4,8 @@
       <%= task.title %>
     </div>
     <div class="flex gap-4">
-      <%= link_to "Edit", edit_task_path(task), class: "text-blue-400 hover:text-blue-600" %>
-      <%= button_to "Delete", task, method: :delete, class: "text-red-400 hover:text-red-600" %>
+      <%= link_to "Edit", edit_tasklist_task_path(tasklist, task), class: "text-blue-400 hover:text-blue-600" %>
+      <%= button_to "Delete", tasklist_task_path(tasklist, task), method: :delete, class: "text-red-400 hover:text-red-600" %>
     </div>
   </div>
 <% end %>

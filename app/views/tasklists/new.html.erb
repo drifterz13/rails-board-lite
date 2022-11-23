@@ -1,3 +1,5 @@
 <h1 class="text-2xl">Create tasklist</h1>
-<%= render "form", tasklist: @tasklist %>
-<%= link_to "Back", root_path %>
+<%= turbo_frame_tag dom_id(@tasklist) do %>
+  <%= render "form", tasklist: @tasklist %>
+  <%= link_to "Back", root_path %>
+<% end %>
