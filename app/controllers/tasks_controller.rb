@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_tasklist, only: [:new, :create]
+  before_action :set_tasklist, only: [:new, :create, :edit, :update]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -32,7 +32,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to tasks_path }
+        format.html { redirect_to tasklists_path }
         format.turbo_stream { flash.now[:notice] = "Task was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -1,2 +1,2 @@
-<%= turbo_stream.replace @task %>
+<%= turbo_stream.replace @task, partial: "tasks/task", locals: { tasklist: @tasklist, task: @task } %>
 <%= render_turbo_stream_flash_messages %>
