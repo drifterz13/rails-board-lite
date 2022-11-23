@@ -1,0 +1,43 @@
+<div class="relative inline-block text-left" data-controller="menu">
+  <div>
+    <button 
+      type="button" 
+      data-action="click->menu#toggle"
+      data-menu-target="menuButton"
+      class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900" 
+      id="menu-button" 
+      aria-expanded="false" 
+      aria-haspopup="true"
+      >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
+      </svg>
+    </button>
+  </div>
+  <div
+    data-menu-target="items" 
+    class="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none" 
+    role="menu" aria-orientation="vertical" 
+    aria-labelledby="menu-button" 
+    tabindex="-1"
+    style="display:none;"
+  >
+    <div class="py-1" role="none">
+      <%= link_to "Edit", edit_tasklist_path(tasklist.id), 
+        class: "font-medium text-gray-900 block px-4 py-2 text-sm", 
+        role: "menuitem", 
+        tabindex: -1, 
+        id: "edit-menu", 
+        data: { action: "click->menu#toggle" } 
+      %>
+      <%= button_to "Delete", tasklist, 
+        method: :delete, 
+        class: "font-medium text-red-400 block px-4 py-2 text-sm", 
+        role: "menuitem", 
+        tabindex: -1, 
+        id: "delete-menu", 
+        data: { action: "click->menu#toggle" } 
+      %>
+    </div>
+  </div>
+</div>

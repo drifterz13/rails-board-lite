@@ -7,5 +7,5 @@ import { application } from "./application"
 import FormController from "./form_controller"
 application.register("form", FormController)
 
-import RemovalsController from "./removals_controller"
-application.register("removals", RemovalsController)
+import MenuController from "./menu_controller"
+application.register("menu", MenuController)
