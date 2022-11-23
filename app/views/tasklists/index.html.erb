@@ -1,27 +1,7 @@
-<div id="tasklists" class="flex gap-3">
-  <% @tasklists.each do |tasklist|  %>
-    <div class="flex flex-col">
-      <%= turbo_frame_tag dom_id(tasklist) do %>
-        <div class="w-[300px] flex justify-between items-center px-4 py-2 bg-blue-300">
-          <div class="text-lg font-bold">
-            <%= tasklist.title %>
-          </div>
-          <div class="flex gap-1">
-            <%= link_to "edit", edit_tasklist_path(tasklist.id) %>
-            <%= button_to "delete", tasklist, method: :delete, class: "underline text-red-400" %>
-            <%= link_to new_tasklist_task_path(tasklist.id) do %>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-      <% tasklist.tasks.each do |task| %>
-        <%= render "tasks/task", { tasklist: tasklist, task: task } %>
-      <% end %>
-    </div>
-  <% end %>
+<div class="flex gap-3">
+  <div id="tasklists" class="flex gap-3">
+    <%= render @tasklists %>
+  </div>
   <%= turbo_frame_tag dom_id(Tasklist.new) %>
   <%= link_to "Create List", new_tasklist_path, data: { turbo_frame: dom_id(Tasklist.new) }, class: "text-blue-400"  %>
 </div>

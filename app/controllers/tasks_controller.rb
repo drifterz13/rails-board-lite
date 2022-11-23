@@ -19,7 +19,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         format.html { redirect_to tasklists_path }
-        # format.turbo_stream { flash.now[:notice] = "Task was successfully created." }
+        format.turbo_stream { flash.now[:notice] = "Task was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

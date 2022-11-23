@@ -15,6 +15,7 @@ class TasklistsController < ApplicationController
     respond_to do |format|
       if @tasklist.save
         format.html { redirect_to root_path }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
       end
