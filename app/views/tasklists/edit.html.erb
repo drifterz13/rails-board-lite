@@ -1,4 +1,4 @@
 <h1 class="text-xl">Edit Tasklist Page</h1>
-<%= turbo_frame_tag @tasklist do %>
+<%= turbo_frame_tag dom_id(@tasklist, :header) do %>
   <%= render "form", tasklist: @tasklist %>
 <% end %>

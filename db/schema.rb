@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_22_135823) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_002103) do
   create_table "tasklists", force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", null: false
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_135823) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "tasklist_id", null: false
+    t.integer "position"
     t.index ["tasklist_id"], name: "index_tasks_on_tasklist_id"
   end
 
