@@ -38,8 +38,8 @@ class TasklistsController < ApplicationController
   def destroy
     @tasklist.destroy
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.remove(@tasklist) }
       format.html { redirect_to tasklists_path, status: :see_other }
+      format.turbo_stream
     end
   end
 
