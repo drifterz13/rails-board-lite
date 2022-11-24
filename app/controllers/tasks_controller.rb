@@ -2,10 +2,6 @@ class TasksController < ApplicationController
   before_action :set_tasklist, only: [:new, :create, :edit, :update]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @tasks = Task.ordered
-  end
-
   def show
   end
 

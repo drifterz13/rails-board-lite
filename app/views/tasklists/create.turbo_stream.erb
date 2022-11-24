@@ -1,2 +1,2 @@
-<%= turbo_stream.append "tasklists", partial: "tasklists/tasklist", locals: { tasklist: @tasklist } %>
+<%= turbo_stream.append :tasklists, partial: "tasklists/tasklist", locals: { tasklist: @tasklist } %>
 <%= turbo_stream.update Tasklist.new, "" %>

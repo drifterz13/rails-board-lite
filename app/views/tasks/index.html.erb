@@ -1,7 +1,0 @@
-<div class='mb-5'>
-  <%= turbo_frame_tag "tasks" do %>
-    <%= render @tasks %>
-  <% end %>
-</div>
-<%= link_to "New task", new_task_path, data: { turbo_frame: dom_id(Task.new) }, class: "text-blue-400 hover:text-blue-600" %>
-<%= turbo_frame_tag dom_id(Task.new) %>
