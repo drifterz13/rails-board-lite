@@ -1,5 +1,5 @@
 <% flash.each do |flash_type, message| %>
-  <div class="<%= flash_color_by(flash_type) %>">
+  <div data-controller="flash" class="<%= flash_color_by(flash_type) %>">
     <%= message %>
   </div>
 <% end %>

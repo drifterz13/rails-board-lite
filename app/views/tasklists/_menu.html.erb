@@ -4,7 +4,7 @@
       type="button" 
       data-action="click->menu#toggle"
       data-menu-target="menuButton"
-      class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900" 
+      class="group inline-flex justify-center text-sm font-medium text-primary-content" 
       id="menu-button" 
       aria-expanded="false" 
       aria-haspopup="true"
@@ -24,7 +24,7 @@
   >
     <div class="py-1" role="none">
       <%= link_to "Edit", edit_tasklist_path(tasklist.id), 
-        class: "font-medium text-gray-900 block px-4 py-2 text-sm", 
+        class: "font-medium text-neutral block px-4 py-2 text-sm", 
         role: "menuitem", 
         tabindex: -1, 
         id: "edit-menu", 

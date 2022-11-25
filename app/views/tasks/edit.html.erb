@@ -2,6 +2,5 @@
 <%= turbo_frame_tag dom_id(@task) do %>
   <div class="max-w-md">
     <%= render "form", task: @task, tasklist: @tasklist %>
-    <%= link_to "Cancel", tasklists_path %>
   </div>
 <% end %>

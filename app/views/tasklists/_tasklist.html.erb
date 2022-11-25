@@ -1,8 +1,8 @@
 <%= turbo_frame_tag dom_id(tasklist) do %>
-  <div class="flex flex-col">
+  <div class="flex flex-col h-full">
     <%= turbo_frame_tag dom_id(tasklist, :header) do %>
       <div class="w-[300px] flex justify-between items-center px-4 py-2 bg-primary text-primary-content">
-        <div class="text-lg font-bold">
+        <div>
           <%= tasklist.title %>
         </div>
         <div class="flex gap-1">
@@ -16,7 +16,7 @@
       </div>
     <% end %>
     <%= turbo_frame_tag dom_id(tasklist, :new_task) %>
-    <%= turbo_frame_tag dom_id(tasklist, :tasks), data: { controller: "dnd", "tasklist-id": tasklist.id } do %>
+    <%= turbo_frame_tag dom_id(tasklist, :tasks), data: { controller: "dnd", "tasklist-id": tasklist.id }, class: "h-full" do %>
       <% tasklist.tasks.each do |task| %>
         <%= render "tasks/task", { tasklist: tasklist, task: task } %>
       <% end %>

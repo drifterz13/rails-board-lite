@@ -1,4 +1,4 @@
-<%= form_with model: [@tasklist, @task], class: 'flex flex-col gap-2'  do |f| %>
+<%= form_with model: [@tasklist, @task], class: "flex flex-col gap-2", data: { controller: "form" } do |f| %>
   <% if task.errors.any? %>
     <h2>
       <%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:
@@ -9,7 +9,12 @@
       <% end %>
     </ul>
   <% end %>
-  <%= f.label :title, "Task title" %>
-  <%= f.text_field :title, placeholder: "My task", autofocus: true, class: "bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block p-2.5"  %>
-  <%= f.submit nil, class: "text-white bg-blue-400 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer" %>
+  <%= f.label :title, "Task title", hidden: true %>
+  <%= f.text_field :title, 
+    placeholder: "My task", 
+    autofocus: true, 
+    data: { action: "blur->form#submit", "form-target": "input" }, 
+    class: "bg-base-100 border border-meutral text-neutral text-sm focus:ring-primary focus:border-primary block p-2.5"  
+  %>
+  <%= f.submit nil, class: "btn" %>
 <% end %>

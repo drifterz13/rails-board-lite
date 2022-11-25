@@ -1,6 +1,6 @@
 <%= turbo_frame_tag dom_id(task), data: { "task-id": task.id } do %>
-  <div class="bg-base-100 shadow px-4 py-2 max-w-md text-base-content">
-    <div class="text-lg font-bold">
+  <div class="bg-base-100 shadow px-4 py-2 max-w-md text-neutral cursor-grab">
+    <div>
       <%= task.title %>
     </div>
     <div class="flex gap-4">

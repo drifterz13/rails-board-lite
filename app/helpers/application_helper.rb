@@ -4,7 +4,6 @@ module ApplicationHelper
   end
 
   def flash_color_by(type)
-    puts type
     case type
     when "notice"
       "notice text-green-600"
