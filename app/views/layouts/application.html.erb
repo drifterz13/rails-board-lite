@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="corporate">
   <head>
     <title>Lite Board</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -10,12 +10,7 @@
   </head>
   <body>
     <div class='h-screen'>
-      <div class="px-9 py-6 shadow flex justify-end gap-3">
-        <% if user_signed_in? %>
-          <%= current_user.email %>
-          <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
-        <% end %>
-      </div>
+      <%= render "layouts/navbar" %>
       <div id="flash" class="flash">
         <%= render "layouts/flash" %>
       </div>

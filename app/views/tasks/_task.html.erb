@@ -1,11 +1,11 @@
 <%= turbo_frame_tag dom_id(task), data: { "task-id": task.id } do %>
-  <div class="bg-white shadow px-4 py-2 max-w-md">
+  <div class="bg-base-100 shadow px-4 py-2 max-w-md text-base-content">
     <div class="text-lg font-bold">
       <%= task.title %>
     </div>
     <div class="flex gap-4">
-      <%= link_to "Edit", edit_tasklist_task_path(tasklist, task), class: "text-blue-400 hover:text-blue-600" %>
-      <%= button_to "Delete", tasklist_task_path(tasklist, task), method: :delete, class: "text-red-400 hover:text-red-600" %>
+      <%= link_to "Edit", edit_tasklist_task_path(tasklist, task), class: "link link-primary" %>
+      <%= button_to "Delete", tasklist_task_path(tasklist, task), method: :delete, class: "link link-error" %>
     </div>
   </div>
 <% end %>
