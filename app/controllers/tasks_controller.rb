@@ -11,7 +11,7 @@ class TasksController < ApplicationController
 
   def create
     @task = @tasklist.tasks.build(task_params)
-    @task.move_to_top
+    @task.insert_at(1)
 
     respond_to do |format|
       if @task.save
