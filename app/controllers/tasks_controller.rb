@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_tasklist, only: [:new, :create, :edit, :update]
+  before_action :set_tasklist, only: [:show, :new, :create, :edit, :update]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def show
