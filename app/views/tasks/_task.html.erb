@@ -1,12 +1,3 @@
 <%= turbo_frame_tag dom_id(task), data: { "task-id": task.id } do %>
-  <div class="bg-base-100 shadow px-4 py-2 max-w-md text-neutral cursor-grab">
-    <div>
-      <%= task.title %>
-    </div>
-    <div class="flex gap-4">
-      <%= link_to "Open", tasklist_task_path(tasklist, task), data: { turbo_frame: :show_task_modal } , class: "link link-primary" %>
-      <%= link_to "Edit", edit_tasklist_task_path(tasklist, task), class: "link link-primary" %>
-      <%= button_to "Delete", tasklist_task_path(tasklist, task), method: :delete, class: "link link-error" %>
-    </div>
-  </div>
+  <%= link_to task.title, tasklist_task_path(tasklist, task), data: { turbo_frame: :modal } , class: "block h-10 bg-base-100 shadow px-4 py-2 max-w-md text-neutral cursor-grab" %>
 <% end %>

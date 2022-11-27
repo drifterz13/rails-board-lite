@@ -1,0 +1,9 @@
+<%= turbo_frame_tag :modal do %>
+  <%= turbo_frame_tag dom_id(task, :show) do %>
+    <h1 class='text-2xl font-bold'>
+      <%= task.title %>
+    </h1>
+  <% end %>
+  <%= link_to "Edit task", edit_tasklist_task_path(tasklist, task), data: { turbo_frame: dom_id(task, :show) }, class: "text-blue-400 hover:text-blue-600" %>
+  <%= button_to "Delete task", [tasklist, task], method: :delete, data: { action: "click->modal#close" }, class: "text-red-400 hover:text-red-600"  %>
+<% end %>

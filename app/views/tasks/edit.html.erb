@@ -1,5 +1,5 @@
 <div class="text-2xl font-bold">Edit task</div>
-<%= turbo_frame_tag dom_id(@task) do %>
+<%= turbo_frame_tag dom_id(@task, :show) do %>
   <div class="max-w-md">
     <%= render "form", task: @task, tasklist: @tasklist %>
   </div>

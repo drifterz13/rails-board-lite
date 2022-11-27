@@ -1,2 +1,3 @@
 <%= turbo_stream.replace @task, partial: "tasks/task", locals: { tasklist: @tasklist, task: @task } %>
+<%= turbo_stream.replace :modal, partial: "tasks/show_task", locals: { tasklist: @tasklist, task: @task } %>
 <%= render_turbo_stream_flash_messages %>
