@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_tasklist, only: [:show, :new, :create, :edit, :update]
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :sort]
 
   def show
   end
@@ -46,6 +46,16 @@ class TasksController < ApplicationController
     end
   end
 
+  def sort
+    @task.insert_at(sort_params[:position])
+
+    if @task.update(sort_params)
+      head :ok
+    else
+      redirect_to tasklists_path, status: :internal_server_error
+    end
+  end
+
   private
 
   def set_tasklist
@@ -58,5 +68,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title, :completed)
+  end
+
+  def sort_params
+    params.require(:task).permit(:position, :tasklist_id)
   end
 end

@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-
-  patch '/tasks/:id/sort', to: "dnds#sort"
-
   resources :tasklists do
     resources :tasks
+  end
+
+  resources :tasks do
+    member do
+      patch "sort"
+    end
   end
 
   root "tasklists#index"
