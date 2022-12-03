@@ -3,6 +3,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :sort]
 
   def show
+    @users = User.all
+    @task_users = TaskUser.where(task: @task)
   end
 
   def new

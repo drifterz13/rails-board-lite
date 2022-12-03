@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :task_users, only: [:create]
+
   root "tasklists#index"
 end
