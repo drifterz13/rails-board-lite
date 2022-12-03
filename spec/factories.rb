@@ -16,6 +16,13 @@ FactoryBot.define do
   factory :task_user do
     task
     user
+
+    trait :assignee do
+      role { 1 }
+    end
+
+    trait :follower do
+      role { 0 }
+    end
   end
 end
-

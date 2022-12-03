@@ -7,7 +7,7 @@
       <% end %>
     <% end %>
     <%= turbo_frame_tag :assignee_user_select do %>
-      <%= render "task_users/users_select", { users: @users, task_id: @task.id, role: :assignee } %>
+      <%= render "task_users/users_select", { users: assignable_users(@users, @task, :assignee), task: @task, role: :assignee } %>
     <% end %>
   </div>
   <div class="flex gap-1 items-center">
@@ -18,7 +18,7 @@
       <% end %>
     <% end %>
     <%= turbo_frame_tag :follower_user_select do %>
-      <%= render "task_users/users_select", { users: @users, task_id: @task.id, role: :follower } %>
+      <%= render "task_users/users_select", { users: assignable_users(@users, @task, :follower), task: @task, role: :follower } %>
     <% end %>
   </div>
 </div>
