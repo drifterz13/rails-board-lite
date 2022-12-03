@@ -12,8 +12,8 @@
 #  updated_at             :datetime         not null
 #
 class User < ApplicationRecord
-  has_many :task_users
-  has_many :task_users, through: :tasks
+  has_many :task_users, dependent: :destroy
+  has_many :tasks, through: :task_users
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

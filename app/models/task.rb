@@ -12,8 +12,8 @@
 #
 class Task < ApplicationRecord
   belongs_to :tasklist
-  has_many :task_users
-  has_many :task_users, through: :users
+  has_many :task_users, dependent: :destroy
+  has_many :users, through: :task_users
 
   acts_as_list scope: :tasklist
   validates :title, presence: true
