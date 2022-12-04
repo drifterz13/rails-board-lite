@@ -3,10 +3,9 @@ module TaskUsersHelper
     if task.users.empty?
       users
     else
-      task_users = task.task_users
-      same_role_users = task_users.filter { |task_user| task_user.role == role.to_s }.map { |task_user| task_user.user }
+      excluded_user_ids = task.task_users.where(role: role.to_sym).pluck(:user_id)
 
-      users.reject { |user| same_role_users.include? user }
+      users.reject { |user| excluded_user_ids.include? user.id }
     end
   end
 end
