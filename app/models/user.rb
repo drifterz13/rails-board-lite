@@ -12,6 +12,7 @@
 #  updated_at             :datetime         not null
 #
 class User < ApplicationRecord
+  has_one_attached :avatar
   has_many :task_users, dependent: :destroy
   has_many :tasks, through: :task_users
 
