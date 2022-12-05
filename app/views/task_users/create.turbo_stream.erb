@@ -1,9 +1,0 @@
-<%= turbo_stream.append dom_id(@task, @role) do %>
-  <%= @task_user.email %>
-<% end %>
-<%= turbo_stream.replace :assignee_user_select do %>
-  <%= render "task_users/users_select", { users: @users, task_id: @task.id, role: :assignee } %>
-<% end %>
-<%= turbo_stream.replace :follower_user_select do %>
-  <%= render "task_users/users_select", { users: @users, task_id: @task.id, role: :follower } %>
-<% end %>

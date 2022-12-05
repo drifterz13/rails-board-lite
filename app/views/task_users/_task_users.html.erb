@@ -1,24 +1,18 @@
-<div class="flex flex-col gap-4">
-  <div class="flex gap-1 items-center">
-    <p class="font-semibold">Assignees: </p>
-    <%= turbo_frame_tag dom_id(@task, :assignee) do %>
+<%= turbo_frame_tag dom_id(@task, :users) do %>
+  <div class="flex flex-col gap-4">
+    <div class="flex gap-1 items-center">
+      <p class="font-semibold">Assignees: </p>
       <% task_users.assignee.each do |task_assignee| %>
         <%= task_assignee.email %>
       <% end %>
-    <% end %>
-    <%= turbo_frame_tag :assignee_user_select do %>
       <%= render "task_users/users_select", { users: assignable_users(@users, @task, :assignee), task: @task, role: :assignee } %>
-    <% end %>
-  </div>
-  <div class="flex gap-1 items-center">
-    <p class="font-semibold">Followers: </p>
-    <%= turbo_frame_tag dom_id(@task, :follower) do %>
+    </div>
+    <div class="flex gap-1 items-center">
+      <p class="font-semibold">Followers: </p>
       <% task_users.follower.each do |task_follower| %>
         <%= task_follower.email %>
       <% end %>
-    <% end %>
-    <%= turbo_frame_tag :follower_user_select do %>
       <%= render "task_users/users_select", { users: assignable_users(@users, @task, :follower), task: @task, role: :follower } %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>

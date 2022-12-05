@@ -1,0 +1,3 @@
+<%= turbo_stream.replace dom_id(@task, :users) do %>
+  <%= render "task_users/task_users", { task_users: @task_users, task: @task, users: @users } %>
+<% end %>

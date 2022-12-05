@@ -1,10 +1,11 @@
 class TaskUsersController < ApplicationController
-  def create
+  def update
+    @task_user = TaskUser.find_or_initialize_by(task_id: params[:task_id], user_id: params[:user_id])
+    @task_user.role = params[:role]
+
+    @task = Task.includes(:task_users).find(params[:task_id])
+    @task_users = @task.task_users
     @users = User.all
-    @task = Task.find(params[:task_id])
-    @user = User.find(params[:user_id])
-    @role = params[:role]
-    @task_user = TaskUser.create(task: @task, user: @user, role: @role)
 
     respond_to do |format|
       if @task_user.save!
@@ -12,7 +13,7 @@ class TaskUsersController < ApplicationController
         format.html { redirect_to tasklists_path }
       else
         format.html { render :root, status: :unprocessable_entity }
-        format.turbo_stream { flash.now[:alert] = "Something went wrong." }
+        format.turbo_stream { flash.now[:alert] = "Fail to update task user." }
       end
     end
   end
