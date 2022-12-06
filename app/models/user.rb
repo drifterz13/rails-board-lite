@@ -12,7 +12,10 @@
 #  updated_at             :datetime         not null
 #
 class User < ApplicationRecord
-  has_one_attached :avatar
+  has_one_attached :avatar do |attachable|
+    attachable.variant :avatar_xl, resize_to_limit: [96, 96]
+    attachable.variant :avatar_sm, resize_to_limit: [40, 40]
+  end
   has_many :task_users, dependent: :destroy
   has_many :tasks, through: :task_users
 

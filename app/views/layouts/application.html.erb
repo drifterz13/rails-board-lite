@@ -10,7 +10,9 @@
   </head>
   <body>
     <div class='h-screen'>
-      <%= render "layouts/navbar" %>
+      <% if user_signed_in? %>
+        <%= render "layouts/navbar" %>
+      <% end %>
       <div id="flash" class="h-6 text-center">
         <%= render "layouts/flash" %>
       </div>
