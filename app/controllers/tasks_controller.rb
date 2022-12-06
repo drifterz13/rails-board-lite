@@ -1,10 +1,10 @@
 class TasksController < ApplicationController
   before_action :set_tasklist, only: [:show, :new, :create, :edit, :update]
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :sort]
+  before_action :set_task, only: [:edit, :update, :destroy, :sort]
 
   def show
     @users = User.all
-    @task_users = TaskUser.where(task: @task)
+    @task = Task.includes(:task_users).find(params[:id])
   end
 
   def new

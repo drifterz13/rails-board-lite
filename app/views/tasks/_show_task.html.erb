@@ -5,7 +5,7 @@
     </h1>
   <% end %>
   <div class="flex mt-5 items-center">
-    <%= render "task_users/task_users", { task_users: task_users, task: task, users: users } %>
+    <%= render "task_users/task_users", { task: task, users: users } %>
   </div>
   <div class="flex gap-2 mt-5">
     <%= link_to "Edit task", edit_tasklist_task_path(tasklist, task), data: { turbo_frame: dom_id(task, :show) }, class: "text-blue-400 hover:text-blue-600" %>
