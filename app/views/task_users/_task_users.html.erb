@@ -2,15 +2,23 @@
   <div class="flex flex-col gap-4">
     <div class="flex gap-1 items-center">
       <p class="font-semibold">Assignees: </p>
-      <% task_users.assignee.each do |task_assignee| %>
-        <%= task_assignee.email %>
+      <% @task.assignee.each do |task_assignee| %>
+        <div class="avatar">
+          <div class="w-6 rounded-full">
+            <%= image_tag avatar_img_for(task_assignee.user, :avatar_sm) %>
+          </div>
+        </div>
       <% end %>
       <%= render "task_users/users_select", { users: assignable_users(@users, @task, :assignee), task: @task, role: :assignee } %>
     </div>
     <div class="flex gap-1 items-center">
       <p class="font-semibold">Followers: </p>
-      <% task_users.follower.each do |task_follower| %>
-        <%= task_follower.email %>
+      <% @task.follower.each do |task_follower| %>
+        <div class="avatar">
+          <div class="w-6 rounded-full">
+            <%= image_tag avatar_img_for(task_follower.user, :avatar_sm) %>
+          </div>
+        </div>
       <% end %>
       <%= render "task_users/users_select", { users: assignable_users(@users, @task, :follower), task: @task, role: :follower } %>
     </div>

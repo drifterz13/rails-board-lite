@@ -12,9 +12,9 @@ module ApplicationHelper
     end
   end
 
-  def avatar_img(variant)
-    if current_user.avatar.attached?
-      current_user.avatar.variant(variant)
+  def avatar_img_for(user = current_user, variant)
+    if user.avatar.attached?
+      user.avatar.variant(variant)
     else
       "user.png"
     end

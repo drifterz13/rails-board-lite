@@ -6,7 +6,7 @@
     <div class="dropdown dropdown-end">
       <label tabindex="0" class="avatar cursor-pointer">
         <div class="w-10 rounded-full">
-          <%= image_tag avatar_img(:avatar_sm) %>
+          <%= image_tag avatar_img_for(current_user, :avatar_md) %>
         </div>
       </label>
       <% if user_signed_in? %>
