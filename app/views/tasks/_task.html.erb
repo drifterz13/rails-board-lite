@@ -1,3 +1,5 @@
 <%= turbo_frame_tag dom_id(task), data: { "task-id": task.id } do %>
-  <%= link_to task.title, tasklist_task_path(tasklist, task), data: { turbo_frame: :modal_content } , class: "block h-10 bg-base-100 shadow px-4 py-2 max-w-md text-neutral cursor-grab" %>
+  <div class="flex flex-col gap-2 bg-base-100 shadow px-4 py-2 max-w-md text-neutral cursor-grab">
+    <%= link_to task.title, tasklist_task_path(tasklist, task), data: { turbo_frame: :modal_content } %>
+  </div>
 <% end %>

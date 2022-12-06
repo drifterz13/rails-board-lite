@@ -13,10 +13,10 @@ RSpec.describe TaskUser, type: :model do
     expect(user.tasks).to include(task)
   end
 
-  it "has default follower role" do
+  it "has default followers role" do
     task_user = create(:task_user)
 
-    expect(task_user.follower?).to eq(true)
+    expect(task_user.followers?).to eq(true)
   end
 
   it "destroy task_user when asscociate task is destroyed" do

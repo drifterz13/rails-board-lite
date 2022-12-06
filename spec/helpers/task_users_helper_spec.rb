@@ -5,18 +5,18 @@ RSpec.describe TaskUsersHelper, type: :helper do
     task = create(:task)
     user1 = create(:user, email: "test1@test.com")
     user2 = create(:user, email: "test2@test.com")
-    task_user1 = create(:task_user, :follower, task: task, user: user1)
-    task_user2 = create(:task_user, :assignee, task: task, user: user2)
+    task_user1 = create(:task_user, :followers, task: task, user: user1)
+    task_user2 = create(:task_user, :assignees, task: task, user: user2)
 
     users = User.all
 
-    assignable_followers = helper.assignable_users(users, task, :follower)
-    expect(assignable_followers.length).to be(1)
-    expect(assignable_followers).to include(user2)
+    assignable_followerss = helper.assignable_users(users, task, :followers)
+    expect(assignable_followerss.length).to be(1)
+    expect(assignable_followerss).to include(user2)
 
-    assignable_assignees = helper.assignable_users(users, task, :assignee)
+    assignable_assigneess = helper.assignable_users(users, task, :assignees)
 
-    expect(assignable_assignees.length).to be(1)
-    expect(assignable_assignees).to include(user1)
+    expect(assignable_assigneess.length).to be(1)
+    expect(assignable_assigneess).to include(user1)
   end
 end

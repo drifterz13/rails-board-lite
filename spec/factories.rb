@@ -8,7 +8,7 @@ FactoryBot.define do
     tasklist
   end
 
-  factory :user, aliases: [:assignee] do
+  factory :user, aliases: [:assignees] do
     email { "tester@app.com" }
     password { "tester123" }
   end
@@ -17,11 +17,11 @@ FactoryBot.define do
     task
     user
 
-    trait :assignee do
+    trait :assignees do
       role { 1 }
     end
 
-    trait :follower do
+    trait :followers do
       role { 0 }
     end
   end

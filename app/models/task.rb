@@ -15,8 +15,8 @@ class Task < ApplicationRecord
   has_many :task_users, dependent: :destroy
   has_many :users, through: :task_users
 
-  delegate :assignee, to: :task_users
-  delegate :follower, to: :task_users
+  delegate :assignees, to: :task_users
+  delegate :followers, to: :task_users
 
   acts_as_list scope: :tasklist
   validates :title, presence: true
