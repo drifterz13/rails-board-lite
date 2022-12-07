@@ -1,5 +1,10 @@
-<%= turbo_frame_tag dom_id(task), data: { "task-id": task.id } do %>
-  <div class="flex flex-col gap-2 bg-base-100 shadow px-4 py-2 max-w-md text-neutral cursor-grab">
-    <%= link_to task.title, tasklist_task_path(tasklist, task), data: { turbo_frame: :modal_content } %>
-  </div>
+<%= turbo_frame_tag dom_id(task), data: { "task-id": task.id }, target: :modal_content do %>
+  <%= link_to tasklist_task_path(tasklist, task), class: "flex flex-col gap-2 bg-base-100 shadow px-4 py-2 max-w-md text-neutral cursor-grab" do %>
+    <%= task.title %>
+    <% unless task.assignees.empty? %>
+      <div>
+        <%= render "task_users/task_users_group", { task: task, role: :assignees } %>
+      </div>
+    <% end %>
+  <% end%>
 <% end %>

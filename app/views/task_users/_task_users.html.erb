@@ -1,26 +1,26 @@
-<%= turbo_frame_tag dom_id(@task, :users) do %>
+<%= turbo_frame_tag dom_id(task, :users) do %>
   <div class="flex flex-col gap-4">
     <div class="flex gap-1 items-center">
-      <p class="font-semibold">assigneess: </p>
-      <% @task.assignees.each do |task_assignees| %>
+      <p class="font-semibold">Assignees: </p>
+      <% task.assignees.each do |assignee| %>
         <div class="avatar">
           <div class="w-6 rounded-full">
-            <%= image_tag avatar_img_for(task_assignees.user, :avatar_sm) %>
+            <%= image_tag avatar_img_for(assignee.user, :avatar_sm) %>
           </div>
         </div>
       <% end %>
-      <%= render "task_users/users_select", { users: assignable_users(@users, @task, :assignees), task: @task, role: :assignees } %>
+      <%= render "task_users/users_select", { users: assignable_users(users, task, :assignees), task: task, role: :assignees } %>
     </div>
     <div class="flex gap-1 items-center">
-      <p class="font-semibold">followerss: </p>
-      <% @task.followers.each do |task_followers| %>
+      <p class="font-semibold">Followers: </p>
+      <% task.followers.each do |follower| %>
         <div class="avatar">
           <div class="w-6 rounded-full">
-            <%= image_tag avatar_img_for(task_followers.user, :avatar_sm) %>
+            <%= image_tag avatar_img_for(follower.user, :avatar_sm) %>
           </div>
         </div>
       <% end %>
-      <%= render "task_users/users_select", { users: assignable_users(@users, @task, :followers), task: @task, role: :followers } %>
+      <%= render "task_users/users_select", { users: assignable_users(users, task, :followers), task: task, role: :followers } %>
     </div>
   </div>
 <% end %>
