@@ -1,5 +1,5 @@
 class TasklistsController < ApplicationController
-  before_action :set_tasklist, only: [:edit, :update, :destroy]
+  before_action :set_tasklist, only: %i[edit update destroy]
 
   def index
     @tasklists = Tasklist.all
@@ -7,6 +7,9 @@ class TasklistsController < ApplicationController
 
   def new
     @tasklist = Tasklist.new
+  end
+
+  def edit
   end
 
   def create
@@ -20,9 +23,6 @@ class TasklistsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
       end
     end
-  end
-
-  def edit
   end
 
   def update

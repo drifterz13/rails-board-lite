@@ -9,7 +9,7 @@ class TaskUsersController < ApplicationController
 
     respond_to do |format|
       if @task_user.save!
-        format.turbo_stream { }
+        format.turbo_stream {}
         format.html { redirect_to tasklists_path }
       else
         format.html { render :root, status: :unprocessable_entity }

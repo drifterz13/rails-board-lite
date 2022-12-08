@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 class Tasklist < ApplicationRecord
-  has_many :tasks, -> { order(position: :asc) }, dependent: :destroy
+  has_many :tasks, -> { order(position: :asc) }, dependent: :destroy, inverse_of: :tasklist
 
   validates :title, presence: true
 end

@@ -11,6 +11,9 @@ class TasksController < ApplicationController
     @task = @tasklist.tasks.build
   end
 
+  def edit
+  end
+
   def create
     @task = @tasklist.tasks.build(task_params)
     @task.insert_at(1)
@@ -23,9 +26,6 @@ class TasksController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
       end
     end
-  end
-
-  def edit
   end
 
   def update

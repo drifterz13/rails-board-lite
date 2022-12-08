@@ -9,7 +9,7 @@ FactoryBot.define do
   end
 
   factory :user, aliases: [:assignees] do
-    email { "tester@app.com" }
+    sequence(:email) { |n| "tester-#{n}@app.com" }
     password { "tester123" }
   end
 
