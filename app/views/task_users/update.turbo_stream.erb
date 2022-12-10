@@ -1,5 +1,2 @@
 <%= turbo_stream.replace dom_id(@task, :users), partial: "task_users/task_users", locals: { task: @task, users: @users } %>
-<% [:assignees, :followers].each do |role| %>
-  <%= turbo_stream.replace dom_id(@task, role), partial: "task_users/task_users_group", locals: { task: @task, users: @users, role: role } %>
-  <%= turbo_stream.replace dom_id(@task, "#{role}_select"), partial: "task_users/users_select", locals: { users: assignable_users(@users, @task, role), task: @task, role: role } %>
-<% end %>
+<%= turbo_stream.replace dom_id(@task), partial: "tasks/task", locals: { task: @task, tasklist: @task.tasklist } %>
