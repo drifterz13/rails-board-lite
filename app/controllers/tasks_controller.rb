@@ -29,6 +29,7 @@ class TasksController < ApplicationController
   end
 
   def update
+    @users = User.all
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to tasklists_path }
