@@ -8,9 +8,5 @@ export default class extends Controller {
 
   close() {
     this.element.hidden = true
-    const modalContent = this.element.querySelector('#modal_content')
-    while (modalContent.firstChild) {
-      modalContent.removeChild(modalContent.firstChild);
-    }
   }
 }
