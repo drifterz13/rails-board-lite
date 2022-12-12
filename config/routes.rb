@@ -12,5 +12,5 @@ Rails.application.routes.draw do
 
   resources :task_users, only: [:update]
 
-  root "tasklists#index"
+  root "homes#index"
 end
