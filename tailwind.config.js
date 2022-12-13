@@ -5,7 +5,7 @@ module.exports = {
     './app/assets/stylesheets/**/*.css',
     './app/javascript/**/*.js'
   ],
-  plugins: [require("daisyui"), require('@tailwindcss/forms'),],
+  plugins: [require("daisyui")],
   daisyui: {
     themes: ["light"],
   },
