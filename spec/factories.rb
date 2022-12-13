@@ -25,4 +25,14 @@ FactoryBot.define do
       role { 0 }
     end
   end
+
+  factory :room do
+    title { "room_1" }
+  end
+
+  factory :message do
+    body { "content" }
+    room
+    user
+  end
 end
