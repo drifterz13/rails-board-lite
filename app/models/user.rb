@@ -19,7 +19,9 @@ class User < ApplicationRecord
   end
   has_many :task_users, dependent: :destroy
   has_many :tasks, through: :task_users
-  has_many :messages
+  has_many :messages, dependent: :destroy
+  has_many :room_users, dependent: :destroy
+  has_many :rooms, through: :room_users
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

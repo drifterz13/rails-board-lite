@@ -35,4 +35,9 @@ FactoryBot.define do
     room
     user
   end
+
+  factory :room_user do
+    room
+    user
+  end
 end
