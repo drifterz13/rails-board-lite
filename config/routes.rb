@@ -12,5 +12,9 @@ Rails.application.routes.draw do
 
   resources :task_users, only: [:update]
 
+  resources :rooms do
+    resources :messages
+  end
+
   root "homes#index"
 end

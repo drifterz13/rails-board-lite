@@ -1,0 +1,9 @@
+<div class="text-lg">Chat Rooms</div>
+<ul class="mb-8">
+  <% @rooms&.each do |room| %>
+    <li>
+      <%= link_to room.title, room, class: "text-primary hover:underline"%>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Create Room", new_room_path, class: "text-primary hover:underline" %>

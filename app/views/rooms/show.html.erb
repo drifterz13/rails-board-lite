@@ -1,0 +1,5 @@
+<div class="text-2xl mb-4">
+  <%= @room.title %>
+</div>
+<%= link_to "Edit Room", edit_room_path, class: "link" %>
+<%= button_to "Delete Room", @room, method: :delete, class: "link link-error" %>
