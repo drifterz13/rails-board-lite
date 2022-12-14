@@ -6,7 +6,13 @@
   </div>
   <div class="min-h-[400px] px-10 py-7">
     <% @room.messages.each do |message| %>
-      <div><%= message.body %></div>
+      <div class="<%= message_class_by(message) %>">
+        <div class="chat-header mb-1">
+          <%= current_user.email.split('@').first.capitalize  %>
+          <time class="text-xs opacity-50"><%= time_ago_in_words(message.created_at) %></time>
+        </div>
+        <div class="chat-bubble chat-bubble-primary"><%= message.body %></div>
+      </div>
     <% end %>
   </div>
   <%= form_with model: [@room, @message], data: { controller: "form", action: "turbo:submit-end->form#reset" } do |f| %>
