@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :task_users, only: [:update]
 
   resources :rooms do
+    patch "join", on: :member
     resources :messages
   end
 

@@ -46,6 +46,17 @@ class RoomsController < ApplicationController
     end
   end
 
+  def join
+    @room = Room.find(params[:room_id])
+    respond_to do |format|
+      if @room.update(users: @room.users.push(current_user))
+        format.html { redirect_to @room }
+      else
+        format.html { render @room, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   def room_params

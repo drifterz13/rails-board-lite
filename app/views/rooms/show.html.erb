@@ -1,26 +1,29 @@
-<div class="w-96 shadow bg-base-100">
-  <div class="h-16 px-6 py-4 border-b-2 border-base-300">
+<div class="w-[650px] mx-auto shadow bg-base-100">
+  <div class="h-16 px-6 py-4 border-b-2 border-base-300 flex justify-between">
     <div class="font-semibold text-gray-700">
       <%= @room.title %>
     </div>
+    <%= render "menu", room: @room %>
   </div>
   <div class="min-h-[400px] px-10 py-7">
-    <% @room.messages.each do |message| %>
-      <div class="<%= message_class_by(message) %>">
-        <div class="chat-header mb-1">
-          <%= current_user.email.split('@').first.capitalize  %>
-          <time class="text-xs opacity-50"><%= time_ago_in_words(message.created_at) %></time>
+    <% if is_room_user(@room, current_user) %>
+      <% @room.messages.each do |message| %>
+        <div class="<%= message_class_by(message) %>">
+          <div class="chat-header mb-1">
+            <%= current_user.email.split('@').first.capitalize  %>
+            <time class="text-xs opacity-50"><%= time_ago_in_words(message.created_at) %></time>
+          </div>
+          <div class="chat-bubble chat-bubble-primary"><%= message.body %></div>
         </div>
-        <div class="chat-bubble chat-bubble-primary"><%= message.body %></div>
-      </div>
+      <% end %>
+    <% else %>
+      <%= button_to "Join", join_room_path(room_id: @room.id), method: :patch, class: "btn btn-outline"  %>
     <% end %>
   </div>
   <%= form_with model: [@room, @message], data: { controller: "form", action: "turbo:submit-end->form#reset" } do |f| %>
-    <div class="flex h-12">
+    <%= content_tag :fieldset, class: "flex h-12", disabled: !is_room_user(@room, current_user) do %>
       <%= f.text_field :body, data: { "form-target": "input" }, placeholder: "Enter Message", class: "w-full border bg-base-200 px-4 py-2 focus:ring-2 focus:ring-primary focus-visible:outline-none" %>
-      <%= f.submit "Send", class: "btn rounded-none" %>
-    </div>
+      <%= f.submit "Send", class: "btn rounded-none disabled:btn-disabled" %>
+    <% end %>
   <% end %>
 </div>
-<%= link_to "Edit Room", edit_room_path, class: "link" %>
-<%= button_to "Delete Room", @room, method: :delete, class: "link link-error" %>
