@@ -10,7 +10,7 @@
       <% @room.messages.each do |message| %>
         <div class="<%= message_class_by(message) %>">
           <div class="chat-header mb-1">
-            <%= current_user.email.split('@').first.capitalize  %>
+            <%= message.user.email.split('@').first.capitalize  %>
             <time class="text-xs opacity-50"><%= time_ago_in_words(message.created_at) %></time>
           </div>
           <div class="chat-bubble chat-bubble-primary"><%= message.body %></div>
