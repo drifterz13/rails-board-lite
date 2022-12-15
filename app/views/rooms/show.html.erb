@@ -1,23 +1,19 @@
-<div class="w-[650px] mx-auto shadow bg-base-100">
+<div class="w-[650px] mx-auto shadow bg-base-100" data-controller="room">
   <div class="h-16 px-6 py-4 border-b-2 border-base-300 flex justify-between">
     <div class="font-semibold text-gray-700">
       <%= @room.title %>
     </div>
     <%= render "menu", room: @room %>
   </div>
-  <div class="min-h-[400px] px-10 py-7">
+  <div class="h-[400px] px-10 py-7 overflow-y-auto" data-room-target="chatPane">
     <% if is_room_user(@room, current_user) %>
-      <% @room.messages.each do |message| %>
-        <div class="<%= message_class_by(message) %>">
-          <div class="chat-header mb-1">
-            <%= message.user.email.split('@').first.capitalize  %>
-            <time class="text-xs opacity-50"><%= time_ago_in_words(message.created_at) %></time>
-          </div>
-          <div class="chat-bubble chat-bubble-primary"><%= message.body %></div>
-        </div>
+      <%= turbo_frame_tag dom_id(@room, :messages) do %>
+        <% @room.messages.each do |message| %>
+          <%= render "messages/message", message: message %>
+        <% end %>
       <% end %>
     <% else %>
-      <%= button_to "Join", join_room_path(room_id: @room.id), method: :patch, class: "btn btn-outline"  %>
+      <%= button_to "Join", join_room_path(room_id: @room.id), method: :patch, class: "btn btn-outline" %>
     <% end %>
   </div>
   <%= form_with model: [@room, @message], data: { controller: "form", action: "turbo:submit-end->form#reset" } do |f| %>
