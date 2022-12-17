@@ -1,6 +1,6 @@
 module MessagesHelper
-  def message_class_by(message)
-    if message.user.id === current_user.id
+  def message_class_by(message, user_id)
+    if message.user.id === user_id
       "chat chat-end"
     else
       "chat chat-start"

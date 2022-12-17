@@ -1,1 +1,1 @@
-<%= turbo_stream.append dom_id(@room, :messages), partial: "messages/message", locals: { message: @message } %>
+<%= turbo_stream.append dom_id(@room, :messages), partial: "messages/message", locals: { message: @message, user_id: current_user.id } %>

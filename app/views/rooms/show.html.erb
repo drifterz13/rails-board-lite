@@ -9,9 +9,10 @@
     <% if is_room_user(@room, current_user) %>
       <%= turbo_frame_tag dom_id(@room, :messages) do %>
         <% @room.messages.each do |message| %>
-          <%= render "messages/message", message: message %>
+          <%= render "messages/message", { message: message, user_id: current_user.id } %>
         <% end %>
       <% end %>
+      <%= turbo_stream_from dom_id(@room, :messages) %>
     <% else %>
       <%= button_to "Join", join_room_path(room_id: @room.id), method: :patch, class: "btn btn-outline" %>
     <% end %>
