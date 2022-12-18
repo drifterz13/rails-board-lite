@@ -1,6 +1,6 @@
 <div class='max-w-md'>
   <%= turbo_frame_tag dom_id(@tasklist, :new_task) do %>
     <%= render "form", task: @task %>
-    <%= link_to "Cancel", root_path, class: "text-neutral hover:neutral-focus" %>
+    <%= link_to "Cancel", tasklists_path, class: "text-neutral hover:neutral-focus" %>
   <% end %>
 </div>

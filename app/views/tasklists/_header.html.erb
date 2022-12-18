@@ -1,0 +1,13 @@
+<%= turbo_frame_tag dom_id(tasklist, :header), class: "w-[300px] flex justify-between items-center px-4 py-2 bg-primary h-12 box-border grow-0 shrink-0 rounded-t-lg" do %>
+  <div class="text-primary-content">
+    <%= tasklist.title %>
+  </div>
+  <div class="flex gap-1 text-primary-content">
+    <%= render "menu", tasklist: tasklist %>
+    <%= link_to new_tasklist_task_path(tasklist.id), data: { turbo_frame: dom_id(tasklist, :new_task) }, class: "p1 h-8 w-8 box-border grid place-content-center hover:bg-primary-focus rounded-full" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      </svg>
+    <% end %>
+  </div>
+<% end %>

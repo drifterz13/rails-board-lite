@@ -17,7 +17,7 @@ class TasklistsController < ApplicationController
 
     respond_to do |format|
       if @tasklist.save
-        format.html { redirect_to root_path }
+        format.html { redirect_to tasklists_path }
         format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -28,7 +28,7 @@ class TasklistsController < ApplicationController
   def update
     respond_to do |format|
       if @tasklist.update(tasklist_params)
-        format.html { redirect_to root_path }
+        format.html { redirect_to tasklists_path }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
