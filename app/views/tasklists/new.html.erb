@@ -1,5 +1,6 @@
 <h1 class="text-2xl">Create tasklist</h1>
 <%= turbo_frame_tag @tasklist do %>
-  <%= render "form", tasklist: @tasklist %>
-  <%= link_to "Back", tasklists_path %>
+  <div class="w-[300px] flex justify-between items-center px-4 py-2 bg-primary h-12 box-border grow-0 shrink-0 rounded-t-lg">
+    <%= render "form", tasklist: @tasklist %>
+  </div>
 <% end %>

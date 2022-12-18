@@ -9,7 +9,7 @@
   <%= f.text_field :title, 
     placeholder: "My tasklist", 
     class: "border border-neutral p-1 w-full" ,
-    data: { "form-target": "input", action: "blur->form#submit" }
+    data: { "form-target": "input", action: @tasklist.persisted? ? "blur->form#submit" : "blur->form#cancel" }
   %>
   <%= f.submit nil, hidden: true, class: "border border-black cursor-pointer" %>
 <% end %>

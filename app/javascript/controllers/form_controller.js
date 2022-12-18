@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { Turbo } from '@hotwired/turbo-rails'
 
 // Connects to data-controller="form"
 export default class extends Controller {
@@ -16,5 +17,9 @@ export default class extends Controller {
 
   reset() {
     this.element.reset()
+  }
+
+  cancel() {
+    Turbo.visit('/tasklists', { action: 'replace' })
   }
 }
