@@ -1,4 +1,4 @@
-<div class="<%= message_class_by(message, user_id) %>">
+<div id="<%= dom_id(message) %>" class="<%= message_class_by(message, user_id) %>">
   <div class="chat-header mb-1">
     <%= message.user.email.split('@').first.capitalize  %>
     <time class="text-xs opacity-50"><%= time_ago_in_words(message.created_at) %></time>

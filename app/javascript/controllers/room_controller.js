@@ -18,7 +18,9 @@ export default class extends Controller {
 
   }
 
-  connect() {}
+  connect() {
+    this.scrollToBottom()
+  }
 
   disconnect() {
     this.observer.disconnect()
