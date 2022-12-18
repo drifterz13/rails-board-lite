@@ -1,4 +1,4 @@
-<%= form_with model: @tasklist, class: "w-full" do |f| %>
+<%= form_with model: @tasklist, class: "w-full", data: { controller: "form" } do |f| %>
   <% if tasklist.errors.any? %>
     <h2><%= pluralize(tasklist.errors.count, "errors") %> prohibited this tasklist to being saved.</h2>
     <% tasklist.errors.full_messages.each do |message| %>
@@ -8,7 +8,8 @@
   <%= f.label :title, hidden: true %>
   <%= f.text_field :title, 
     placeholder: "My tasklist", 
-    class: "border border-neutral p-1 w-full" 
+    class: "border border-neutral p-1 w-full" ,
+    data: { "form-target": "input", action: "blur->form#submit" }
   %>
   <%= f.submit nil, hidden: true, class: "border border-black cursor-pointer" %>
 <% end %>

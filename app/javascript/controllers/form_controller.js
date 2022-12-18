@@ -8,8 +8,10 @@ export default class extends Controller {
     this.inputTarget.select()
   }
 
-  submit() {
-    this.element.submit()
+  submit(e) {
+    e.preventDefault()
+    this.element.requestSubmit()
+
   }
 
   reset() {
