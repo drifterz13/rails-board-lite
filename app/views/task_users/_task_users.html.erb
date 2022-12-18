@@ -2,24 +2,28 @@
   <div class="flex flex-col gap-4">
     <div class="flex gap-1 items-center">
       <p>Assign to</p>
-      <% task.assignees.each do |assignee| %>
-        <div class="avatar">
-          <div class="w-6 rounded-full">
-            <%= image_tag avatar_img_for(assignee.user, :avatar_sm) %>
+      <div class="avatar-group -space-x-3">
+        <% task.assignees.each do |assignee| %>
+          <div class="avatar">
+            <div class="w-6 rounded-full">
+              <%= image_tag avatar_img_for(assignee.user, :avatar_sm) %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
       <%= render "task_users/users_select", { users: assignable_users(users, task, :assignees), task: task, role: :assignees } %>
     </div>
     <div class="flex gap-1 items-center">
       <p>Follow by</p>
-      <% task.followers.each do |follower| %>
-        <div class="avatar">
-          <div class="w-6 rounded-full">
-            <%= image_tag avatar_img_for(follower.user, :avatar_sm) %>
+      <div class="avatar-group -space-x-3">
+        <% task.followers.each do |follower| %>
+          <div class="avatar">
+            <div class="w-6 rounded-full">
+              <%= image_tag avatar_img_for(follower.user, :avatar_sm) %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
       <%= render "task_users/users_select", { users: assignable_users(users, task, :followers), task: task, role: :followers } %>
     </div>
   </div>
